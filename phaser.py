@@ -27,13 +27,10 @@ the document doi: 10.1103/PhysRevE.78.051907 (above)
 """
 
 import numpy as np
-# from phaserutil import *
 from scipy import signal
-from scipy.signal import hilbert
-# from scipy.stats import nanmean,nanstd
 import warnings
-
 from copy import deepcopy
+
 
 class FourierSeries(object):
     def take(self,cols):
@@ -314,7 +311,8 @@ class Phaser(object):
         psf -- callable -- callback to psecfun
     """
 
-    def __init__(self, y=None, C=None, ordP=None, psecfunc=_default_psf, protophfun=hilbert):
+    def __init__(self, y=None, C=None, ordP=None,
+                 psecfunc=_default_psf, protophfun=signal.hilbert):
         """
         Initilizing/training a phaser object
         INPUT:
